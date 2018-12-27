@@ -1,6 +1,6 @@
 import './js/libs/weapp-adapter'
 import './js/libs/symbol'
 
-import Main from './js/main'
+import Launcher from './js/launcher'
 
-new Main() // eslint-disable-line
+new Launcher() // eslint-disable-line
