@@ -1,19 +1,19 @@
-import Sprite   from '../base/sprite'
-import Bullet   from './bullet'
-import DataBus  from '../databus'
+import Sprite from '../base/sprite'
+import Bullet from './bullet'
+import DataBus from '../databus'
 
-const screenWidth    = window.innerWidth
-const screenHeight   = window.innerHeight
+const screenWidth = window.innerWidth
+const screenHeight = window.innerHeight
 
 // 玩家相关常量设置
 const PLAYER_IMG_SRC = 'images/hero.png'
-const PLAYER_WIDTH   = 80
-const PLAYER_HEIGHT  = 80
+const PLAYER_WIDTH = 80
+const PLAYER_HEIGHT = 80
 
 let databus = new DataBus()
 
 export default class Player extends Sprite {
-  constructor() {
+  constructor () {
     super(PLAYER_IMG_SRC, PLAYER_WIDTH, PLAYER_HEIGHT)
 
     // 玩家默认处于屏幕底部居中位置
@@ -36,13 +36,13 @@ export default class Player extends Sprite {
    * @param {Number} y: 手指的Y轴坐标
    * @return {Boolean}: 用于标识手指是否在飞机上的布尔值
    */
-  checkIsFingerOnAir(x, y) {
+  checkIsFingerOnAir (x, y) {
     const deviation = 30
 
-    return !!(   x >= this.x - deviation
-              && y >= this.y - deviation
-              && x <= this.x + this.width + deviation
-              && y <= this.y + this.height + deviation  )
+    return !!(x >= this.x - deviation &&
+              y >= this.y - deviation &&
+              x <= this.x + this.width + deviation &&
+              y <= this.y + this.height + deviation)
   }
 
   /**
@@ -50,21 +50,13 @@ export default class Player extends Sprite {
    * 保证手指处于飞机中间
    * 同时限定飞机的活动范围限制在屏幕中
    */
-  setAirPosAcrossFingerPosZ(x, y) {
+  setAirPosAcrossFingerPosZ (x, y) {
     let disX = x - this.width / 2
     let disY = y - this.height / 2
 
-    if ( disX < 0 )
-      disX = 0
+    if (disX < 0) { disX = 0 } else if (disX > screenWidth - this.width) { disX = screenWidth - this.width }
 
-    else if ( disX > screenWidth - this.width )
-      disX = screenWidth - this.width
-
-    if ( disY <= 0 )
-      disY = 0
-
-    else if ( disY > screenHeight - this.height )
-      disY = screenHeight - this.height
+    if (disY <= 0) { disY = 0 } else if (disY > screenHeight - this.height) { disY = screenHeight - this.height }
 
     this.x = disX
     this.y = disY
@@ -74,45 +66,42 @@ export default class Player extends Sprite {
    * 玩家响应手指的触摸事件
    * 改变战机的位置
    */
-  initEvent() {
-    canvas.addEventListener('touchstart', ((e) => {
+  initEvent () {
+    canvas.addEventListener('touchstart', (e) => {
       e.preventDefault()
 
       let x = e.touches[0].clientX
       let y = e.touches[0].clientY
 
       //
-      if ( this.checkIsFingerOnAir(x, y) ) {
+      if (this.checkIsFingerOnAir(x, y)) {
         this.touched = true
 
         this.setAirPosAcrossFingerPosZ(x, y)
       }
+    })
 
-    }).bind(this))
-
-    canvas.addEventListener('touchmove', ((e) => {
+    canvas.addEventListener('touchmove', (e) => {
       e.preventDefault()
 
       let x = e.touches[0].clientX
       let y = e.touches[0].clientY
 
-      if ( this.touched )
-        this.setAirPosAcrossFingerPosZ(x, y)
+      if (this.touched) { this.setAirPosAcrossFingerPosZ(x, y) }
+    })
 
-    }).bind(this))
-
-    canvas.addEventListener('touchend', ((e) => {
+    canvas.addEventListener('touchend', (e) => {
       e.preventDefault()
 
       this.touched = false
-    }).bind(this))
+    })
   }
 
   /**
    * 玩家射击操作
    * 射击时机由外部决定
    */
-  shoot() {
+  shoot () {
     let bullet = databus.pool.getItemByClass('bullet', Bullet)
 
     bullet.init(
