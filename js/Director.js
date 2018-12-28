@@ -1,6 +1,8 @@
+import DataStore from './base/DataStore'
 export default class Director {
   constructor () {
     console.log('Director 构造器初始化')
+    this.dataStore = DataStore.getInstance()
   }
 
   static getInstance () {
@@ -8,5 +10,9 @@ export default class Director {
       Director.instance = new Director()
     }
     return Director.instance
+  }
+  run () {
+    const bg = this.dataStore.get('background')
+    bg.drawImage()
   }
 }
