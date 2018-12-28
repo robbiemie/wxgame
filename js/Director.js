@@ -27,8 +27,16 @@ export default class Director {
     this.dataStore.get('pencils').push(new DownPencil(top))
   }
   update () {
+    if (this.isGameOver) {
+      // debugger
+      console.log('游戏结束')
+      cancelAnimationFrame(this.dataStore.get('timer'))
+      this.dataStore.destory()
+      return
+    }
     const bg = this.dataStore.get('background')
     const land = this.dataStore.get('land')
+    const birds = this.dataStore.get('birds')
     // 绘制背景
     bg.drawImage()
     // 绘制铅笔
@@ -49,6 +57,9 @@ export default class Director {
     })
     // 绘制陆地
     land.drawImage()
+
+    // 绘制小鸟
+    birds.drawImage()
 
     // 定时器
     let timer = requestAnimationFrame(_ => this.update())

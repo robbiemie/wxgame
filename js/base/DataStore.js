@@ -21,8 +21,7 @@ export default class DataStore {
   }
   // 资源销毁
   destory () {
-    // for (let value of this.map.values()) {
-    //   value = null
-    // }
+    this.map.clear()
+    console.log('this.map', this.map)
   }
 }
