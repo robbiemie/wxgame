@@ -3,22 +3,19 @@
 ## 源码目录介绍
 ```
 ./js
-├── ｃｏｍｍｏｎ                                   // 定义游戏开发基础类
-│   ├── animatoin.js                       // 帧动画的简易实现
-│   ├── pool.js                            // 对象池的简易实现
-│   └── sprite.js                          // 游戏基本元素精灵类
-├── libs
-│   ├── symbol.js                          // ES6 Symbol简易兼容
-│   └── weapp-adapter.js                   // 小游戏适配器
-├── npc
-│   └── enemy.js                           // 敌机类
-├── player
-│   ├── bullet.js                          // 子弹类
-│   └── index.js                           // 玩家类
-├── runtime
-│   ├── background.js                      // 背景类
-│   ├── gameinfo.js                        // 用于展示分数和结算界面
-│   └── music.js                           // 全局音效管理器
-├── databus.js                             // 管控游戏状态
-└── main.js                                // 游戏入口主函数
+├── base                                 // 定义游戏开发基础类
+│   ├── DataStore.js                       // 全局变量缓存器
+│   ├── ResourceLoader.js                  // 资源加载器
+|   ├── Resources.js                       // 资源类
+|   └── Sprite.js                          // 精灵类
+├── instance                             // 游戏实例类
+|   ├── Birds.js                           // 小鸟
+|   ├── Score.js                           // 积分板
+|   └── StartButton.js                     // 开始按钮
+├── runtime                              // 游戏场景类
+|   ├── Background.js                       // 背景
+|   ├── DownPencil.js                       // 下层铅笔
+|   ├── Land.js                             // 陆地
+|   └── UpPencil.js                         // 上层铅笔
+└── Director.js                          // 游戏入口主函数
 ```

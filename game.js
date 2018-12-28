@@ -4,3 +4,5 @@ import './js/libs/symbol'
 import Launcher from './js/launcher'
 
 new Launcher() // eslint-disable-line
+
+console.log('canvas', canvas)
