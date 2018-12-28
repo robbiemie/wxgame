@@ -3,8 +3,9 @@ import Sprite from './../base/Sprite'
 const screenWidth = window.innerWidth
 const screenHeight = window.innerHeight
 export default class Background extends Sprite {
-  constructor (ctx, image = null) {
-    super(ctx, image,
+  constructor () {
+    const image = Sprite.getImage('background')
+    super(image,
       0, 0,
       image.width,
       image.height,
@@ -12,5 +13,6 @@ export default class Background extends Sprite {
       screenWidth,
       screenHeight
     )
+    // console.log('sprite', Sprite.getImage('background'))
   }
 }

@@ -24,7 +24,7 @@ export default class Main {
   }
   render (res) {
     // 游戏结束，立即的销毁资源
-    const bg = new Background(this.ctx, this.dataStore.res['background'])
+    const bg = new Background()
     this.dataStore.put('background', bg)
     this.director = Director.getInstance()
     this.director.run()

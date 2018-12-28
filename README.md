@@ -28,6 +28,7 @@
 ```javascript
   let image = wx.createImage()
   image.src = './resources/background.png'
+  // 资源加载完成回调
   image.onload = _ => {
     this.ctx.drawImage(
       image,
@@ -41,6 +42,7 @@
       image.height
     )
   }
+
 ```
 
 
@@ -71,5 +73,26 @@ export default class Main {
   }
 }
 
+
+```
+
+- super之前不可以调用this
+
+```javascript
+export default class Background extends Sprite {
+  constructor (image = null) {
+    // this 不可以调用
+    this.image = null 
+    // this 不可以调用
+    super(image,
+      0, 0,
+      image.width,
+      image.height,
+      0, 0,
+      screenWidth,
+      screenHeight
+    )
+  }
+}
 
 ```

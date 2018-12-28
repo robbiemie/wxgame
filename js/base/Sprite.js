@@ -1,9 +1,10 @@
+import DataStore from './../base/DataStore'
+
 /**
  * 精灵类
  */
 export default class Sprite {
-  constructor (ctx = null,
-    img = null,
+  constructor (img = null,
     srcX = 0,
     srcY = 0,
     srcW = 0,
@@ -12,7 +13,9 @@ export default class Sprite {
     ctxY = 0,
     ctxW = 0,
     ctxH = 0) {
-    this.ctx = ctx
+    this.dataStore = DataStore.getInstance()
+
+    this.ctx = this.dataStore.ctx
     this.img = img
     this.srcX = srcX
     this.srcY = srcY
@@ -23,17 +26,31 @@ export default class Sprite {
     this.ctxW = ctxW
     this.ctxH = ctxH
   }
-  drawImage () {
+
+  drawImage (
+    img = this.img,
+    srcX = this.srcX,
+    srcY = this.srcY,
+    srcW = this.srcW,
+    srcH = this.srcH,
+    ctxX = this.ctxX,
+    ctxY = this.ctxY,
+    ctxW = this.ctxW,
+    ctxH = this.ctxH) {
     this.ctx.drawImage(
-      this.img,
-      this.srcX,
-      this.srcY,
-      this.srcW,
-      this.srcH,
-      this.ctxX,
-      this.ctxY,
-      this.ctxW,
-      this.ctxH
+      img,
+      srcX,
+      srcY,
+      srcW,
+      srcH,
+      ctxX,
+      ctxY,
+      ctxW,
+      ctxH
     )
+  }
+
+  static getImage (key) {
+    return DataStore.getInstance().res[key]
   }
 }
