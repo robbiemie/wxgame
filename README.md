@@ -42,3 +42,34 @@
     )
   }
 ```
+
+
+- 单例模式应用
+
+```javascript
+export default class Director {
+  constructor () {
+    console.log('Director 构造器初始化')
+  }
+
+  static getInstance () {
+    if (!Director.instance) {
+      Director.instance = new Director()
+    }
+    return Director.instance
+  }
+}
+
+
+// other Class
+import Director from './js/Director'
+
+export default class Main {
+  constructor () {
+    // 获取 Director 实例
+    this.director = Director.getInstance()
+  }
+}
+
+
+```
