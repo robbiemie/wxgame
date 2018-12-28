@@ -11,8 +11,15 @@ export default class Director {
     }
     return Director.instance
   }
-  run () {
+  update () {
     const bg = this.dataStore.get('background')
+    const land = this.dataStore.get('land')
+    // 绘制背景
     bg.drawImage()
+    // 绘制陆地
+    land.drawImage()
+    // 定时器
+    let timer = requestAnimationFrame(_ => this.update())
+    this.dataStore.put('timer', timer)
   }
 }

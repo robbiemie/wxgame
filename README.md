@@ -76,7 +76,7 @@ export default class Main {
 
 ```
 
-- super之前不可以调用this
+- `super`之前不可以调用`this`
 
 ```javascript
 export default class Background extends Sprite {
@@ -92,6 +92,18 @@ export default class Background extends Sprite {
       screenWidth,
       screenHeight
     )
+  }
+}
+
+```
+
+
+- 子类中通过`super`，可以调用父类的方法
+
+```javascript
+export default class Background extends Sprite {
+  draw () {
+    super.drawImage()
   }
 }
 

@@ -1,5 +1,6 @@
 import ResourceLoader from './js/base/ResourceLoader'
 import Background from './js/runtime/Background'
+import Land from './js/runtime/Land'
 import DataStore from './js/base/DataStore'
 import Director from './js/Director'
 
@@ -20,13 +21,19 @@ export default class Main {
     // 常驻资源
     this.dataStore.ctx = this.ctx
     this.dataStore.res = res
-    this.render(res)
+    this.dataStore.screenWidth = window.innerWidth
+    this.dataStore.screenHeight = window.innerHeight
+
+    this.render()
   }
-  render (res) {
+  render () {
     // 游戏结束，立即的销毁资源
     const bg = new Background()
-    this.dataStore.put('background', bg)
+    const land = new Land()
+    this.dataStore
+      .put('background', bg)
+      .put('land', land)
     this.director = Director.getInstance()
-    this.director.run()
+    this.director.update()
   }
 }

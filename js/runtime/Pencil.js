@@ -5,9 +5,8 @@ import Sprite from './../base/Sprite'
  * @param top 顶部距离
  */
 export default class Pencil extends Sprite {
-  constructor (ctx) {
-    super(ctx)
-    this.render()
+  constructor () {
+    const image = Sprite.getImage('')
+    super(image)
   }
-  render () {}
 }
