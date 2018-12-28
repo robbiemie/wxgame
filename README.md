@@ -76,6 +76,38 @@ export default class Main {
 
 ```
 
+- 实现全局状态管理器
+
+```javascript
+
+export default class DataStore {
+  constructor () {
+    this.map = new Map()
+  }
+  static getInstance () {
+    if (!DataStore.instance) {
+      DataStore.instance = new DataStore()
+    }
+    return DataStore.instance
+  }
+  put (key, value) {
+    this.map.set(key, value)
+    return this // 保证链式调用
+  }
+  get (key) {
+    return this.map.get(key)
+  }
+  // 资源销毁
+  destory () {
+    // for (let value of this.map.values()) {
+    //   value = null
+    // }
+  }
+}
+
+
+```
+
 - `super`之前不可以调用`this`
 
 ```javascript
@@ -107,4 +139,21 @@ export default class Background extends Sprite {
   }
 }
 
+```
+
+
+- 
+
+
+- js 随机数
+
+```javascript
+
+Math.ceil();  //向上取整。
+
+Math.floor();  //向下取整。
+
+Math.round();  //四舍五入。
+
+Math.random();  //0.0 ~ 1.0 之间的一个伪随机数
 ```

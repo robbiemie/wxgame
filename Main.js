@@ -23,6 +23,7 @@ export default class Main {
     this.dataStore.res = res
     this.dataStore.screenWidth = window.innerWidth
     this.dataStore.screenHeight = window.innerHeight
+    this.dataStore.gameSpeed = 2 // 游戏速度
 
     this.render()
   }
@@ -30,10 +31,14 @@ export default class Main {
     // 游戏结束，立即的销毁资源
     const bg = new Background()
     const land = new Land()
+    // 注册资源
     this.dataStore
       .put('background', bg)
       .put('land', land)
+      .put('pencils', [])
     this.director = Director.getInstance()
+    // 预创建对象
+    this.director.createPencil()
     this.director.update()
   }
 }

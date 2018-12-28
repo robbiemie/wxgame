@@ -13,7 +13,8 @@ export default class Land extends Sprite {
       image.height
     )
     this.landX = 0
-    this.LandSpeed = 2
+    this.LandSpeed = DataStore.getInstance().gameSpeed
+    console.log('speed', this.LandSpeed)
     this.screenWidth = DataStore.getInstance().screenWidth
   }
   drawImage () {

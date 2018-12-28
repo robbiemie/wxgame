@@ -39,14 +39,10 @@ export default class Sprite {
     ctxH = this.ctxH) {
     this.ctx.drawImage(
       img,
-      srcX,
-      srcY,
-      srcW,
-      srcH,
-      ctxX,
-      ctxY,
-      ctxW,
-      ctxH
+      srcX, srcY,
+      srcW, srcH,
+      ctxX, ctxY,
+      ctxW, ctxH
     )
   }
 
