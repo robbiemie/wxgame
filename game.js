@@ -1,8 +1,3 @@
-import './js/libs/weapp-adapter'
-import './js/libs/symbol'
+import Main from './Main'
 
-import Launcher from './js/launcher'
-
-new Launcher() // eslint-disable-line
-
-console.log('canvas', canvas)
+new Main() // eslint-disable-line

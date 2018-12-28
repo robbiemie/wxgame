@@ -1,4 +1,4 @@
-## quickstart
+## 微信小游戏实践
 
 ## 源码目录介绍
 ```
@@ -18,4 +18,27 @@
 |   ├── Land.js                             // 陆地
 |   └── UpPencil.js                         // 上层铅笔
 └── Director.js                          // 游戏入口主函数
+```
+
+
+## 小游戏填坑指南
+
+- 如何在canvas绘制图片
+
+```javascript
+  let image = wx.createImage()
+  image.src = './resources/background.png'
+  image.onload = _ => {
+    this.ctx.drawImage(
+      image,
+      0, 0,
+      // 源图片裁剪的宽高
+      image.width,
+      image.height,
+      0, 0,
+      // 屏幕投影宽高
+      image.width,
+      image.height
+    )
+  }
 ```
