@@ -33,6 +33,18 @@ export default class Main {
     console.log('注册全局事件')
     wx.onTouchStart(res => {
       console.log('触摸了', res, this.director)
+      // 振动检测
+      wx.vibrateShort({
+        success () {
+          console.log('success')
+        },
+        fail () {
+          console.log('fail')
+        },
+        complete () {
+          console.log('complete')
+        }
+      })
       if (this.director.isGameOver) {
         console.log('游戏结束')
         this.init()

@@ -159,6 +159,23 @@ createBackgroundMusic () {
 }
 ```
 
+- 振动检测
+
+```javascript
+// 振动检测
+wx.vibrateShort({
+  success () {
+    console.log('success')
+  },
+  fail () {
+    console.log('fail')
+  },
+  complete () {
+    console.log('complete')
+  }
+})
+```
+
 - js 随机数
 
 ```javascript
