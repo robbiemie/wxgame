@@ -222,6 +222,28 @@ setConnect () {
 }
 ```
 
+- 在webSocket中发送消息
+
+```javascript
+wx.onSocketOpen(_ => {
+  // 必须在onSocketOpen回调中发送
+  wx.sendSocketMessage({
+    data: '发送客户端消息~~~~~~~~~~~',
+    success () {
+      console.log('发送成功')
+    },
+    complete () {
+      console.log('发送完成')
+    }
+  })
+  // 监听服务端的消息
+  wx.onSocketMessage(res => {
+    console.log('这是接受服务端数据', res)
+  })
+})
+```
+
+
 - js 随机数
 
 ```javascript
