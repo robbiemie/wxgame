@@ -13,11 +13,12 @@ export default class Director {
     }
     return Director.instance
   }
+  // 创建铅笔实例
   createPencil () {
     const maxHeight = -DataStore.getInstance().screenHeight / 2
     const minHeight = -DataStore.getInstance().screenHeight / 4
     let top = -Math.round(Math.random() * 400)
-    console.log('top', top, maxHeight, minHeight)
+    // console.log('top', top, maxHeight, minHeight)
     if (Math.abs(top) > Math.abs(maxHeight)) {
       top = maxHeight
     } else if (Math.abs(top) < Math.abs(minHeight)) {
@@ -25,6 +26,11 @@ export default class Director {
     }
     this.dataStore.get('pencils').push(new UpPencil(top))
     this.dataStore.get('pencils').push(new DownPencil(top))
+  }
+  // 控制小鸟飞行
+  birdsEvent () {
+    console.log('birds', this.dataStore.get('birds').timer)
+    this.dataStore.get('birds').timer = 0
   }
   update () {
     if (this.isGameOver) {

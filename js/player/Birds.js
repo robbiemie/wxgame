@@ -31,7 +31,6 @@ export default class Birds extends Sprite {
     this.index = Math.floor(this.unitCount)
     // 重力加速度
     const g = 0.98 / 2
-    // 小鸟位移
     // 向上偏移量
     const offsetTop = 10
     // 想下偏移量

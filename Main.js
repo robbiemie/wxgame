@@ -26,9 +26,24 @@ export default class Main {
     this.dataStore.screenHeight = window.innerHeight
     this.dataStore.gameSpeed = 2 // 游戏速度
 
-    this.render()
+    this.init()
   }
-  render () {
+  addEventListener () {
+    console.log('注册全局事件')
+    wx.onTouchStart(res => {
+      console.log('触摸了', res, this.director)
+      if (this.director.isGameOver) {
+        console.log('游戏结束')
+        this.init()
+      } else {
+        this.director.birdsEvent()
+      }
+    })
+  }
+  removeEvenListener () {
+  }
+
+  init () {
     // 游戏结束，立即的销毁资源
     const bg = new Background()
     const land = new Land()
@@ -44,5 +59,6 @@ export default class Main {
     this.director.isGameOver = false
     this.director.createPencil()
     this.director.update()
+    this.addEventListener()
   }
 }
