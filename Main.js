@@ -2,6 +2,7 @@ import ResourceLoader from './js/base/ResourceLoader'
 import Background from './js/runtime/Background'
 import Land from './js/runtime/Land'
 import Birds from './js/player/Birds'
+import Score from './js/player/Score'
 import DataStore from './js/base/DataStore'
 import Director from './js/Director'
 
@@ -48,12 +49,14 @@ export default class Main {
     const bg = new Background()
     const land = new Land()
     const birds = new Birds()
+    const score = new Score()
     // 注册资源
     this.dataStore
       .put('background', bg)
       .put('land', land)
       .put('birds', birds)
       .put('pencils', [])
+      .put('score', score)
     this.director = Director.getInstance()
     // 预创建对象
     this.director.isGameOver = false

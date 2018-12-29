@@ -29,10 +29,46 @@ export default class Director {
   }
   // 控制小鸟飞行
   birdsEvent () {
-    console.log('birds', this.dataStore.get('birds').timer)
+    console.log('birds', this.dataStore.get('birds').ctxY)
+    console.log('land', this.dataStore.get('land').ctxY)
     this.dataStore.get('birds').timer = 0
   }
+  // 检测小鸟和铅笔碰撞
+  checkStroke (birdsBorder, pencilBorder) {
+    if (birdsBorder.top > pencilBorder.bottom ||
+      birdsBorder.bottom < pencilBorder.top ||
+      birdsBorder.right < pencilBorder.left ||
+      birdsBorder.left > pencilBorder.right) {
+    }
+  }
+  // 检测小鸟和陆地碰撞
+  checkGameOver () {
+    const birds = this.dataStore.get('birds')
+    const land = this.dataStore.get('land')
+    const pencils = this.dataStore.get('pencils')
+    if (birds.ctxY > land.ctxY) {
+      console.log('发生碰撞', birds)
+      this.isGameOver = true
+    }
+    // 小鸟边框模型
+    const birdsBorder = {
+      top: birds.ctxY,
+      bottom: birds.ctxY + birds.ctxH,
+      left: birds.ctxX,
+      right: birds.ctxX + birds.ctxW
+    }
+    pencils.forEach(item => {
+      const pencilBorder = {
+        top: item.ctxY,
+        bottom: item.ctxY + item.ctxH,
+        left: item.ctxX,
+        right: item.ctxX + item.ctxW
+      }
+      this.checkStroke(birdsBorder, pencilBorder)
+    })
+  }
   update () {
+    this.checkGameOver()
     if (this.isGameOver) {
       // debugger
       console.log('游戏结束')
@@ -43,6 +79,7 @@ export default class Director {
     const bg = this.dataStore.get('background')
     const land = this.dataStore.get('land')
     const birds = this.dataStore.get('birds')
+    const score = this.dataStore.get('score')
     // 绘制背景
     bg.drawImage()
     // 绘制铅笔
@@ -66,6 +103,8 @@ export default class Director {
 
     // 绘制小鸟
     birds.drawImage()
+    // 绘制积分器
+    score.draw()
 
     // 定时器
     let timer = requestAnimationFrame(_ => this.update())

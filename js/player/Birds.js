@@ -23,7 +23,6 @@ export default class Birds extends Sprite {
   drawImage () {
     this.speed = 0.1
     this.unitCount = this.unitCount + this.speed
-
     if (this.index >= 3) {
       this.unitCount = 0
     }
