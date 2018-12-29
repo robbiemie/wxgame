@@ -176,6 +176,52 @@ wx.vibrateShort({
 })
 ```
 
+- 微信常用数据接口
+
+```javascript
+
+// 获取用户授权信息
+// https://developers.weixin.qq.com/miniprogram/dev/api/wx.getUserInfo.html
+wx.getUserInfo(Object object)
+// 用户登录
+// https://developers.weixin.qq.com/miniprogram/dev/api/wx.login.html
+wx.login(Object object)
+```
+
+
+- 搭建简易的websocket服务
+
+```javascript
+// 服务端ws
+const WebSocket = require('ws');
+ 
+const wss = new WebSocket.Server({ port: 8080 });
+// 建立连接
+wss.on('connection', function connection(ws) {
+  // 接受客户端消息
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+  });
+  // 发送消息
+  ws.send('something');
+});
+
+
+// 客户端ws
+setConnect () {
+  console.log('setConnect')
+  wx.connectSocket({
+    url: 'ws://127.0.0.1:8080',
+    success () {
+      console.log('建立成功')
+    },
+    complete () {
+      console.log('建立完成')
+    }
+  })
+}
+```
+
 - js 随机数
 
 ```javascript

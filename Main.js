@@ -62,6 +62,18 @@ export default class Main {
     bgm.loop = true // 循环播放
     bgm.src = 'audio/bgm.mp3'
   }
+  setConnect () {
+    console.log('setConnect')
+    wx.connectSocket({
+      url: 'ws://127.0.0.1:8080',
+      success () {
+        console.log('建立成功')
+      },
+      complete () {
+        console.log('建立完成')
+      }
+    })
+  }
 
   init () {
     // 游戏结束，立即的销毁资源
@@ -70,6 +82,7 @@ export default class Main {
     const birds = new Birds()
     const score = new Score()
     this.createBgm()
+    this.setConnect()
     // 注册资源
     this.dataStore
       .put('background', bg)

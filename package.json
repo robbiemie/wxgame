@@ -1,0 +1,29 @@
+{
+  "name": "wxgame",
+  "version": "1.0.0",
+  "description": "微信小游戏",
+  "main": "Main.js",
+  "dependencies": {
+    "ws": "^6.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "server": "node ./websocket/socket_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yang657850144/wxgame.git"
+  },
+  "keywords": [
+    "wxgame",
+    "小游戏",
+    "wx"
+  ],
+  "author": "Charles Yang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yang657850144/wxgame/issues"
+  },
+  "homepage": "https://github.com/yang657850144/wxgame#readme"
+}
