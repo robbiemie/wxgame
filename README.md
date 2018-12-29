@@ -142,8 +142,22 @@ export default class Background extends Sprite {
 ```
 
 
-- 
+- 微信垃圾回收
 
+```javascript
+wx.triggerGC()
+```
+- 播放音乐
+
+```
+// 播放背景音乐
+createBackgroundMusic () {
+  const bgm = wx.createInnerAudioContext()
+  bgm.autoplay = true // 自动播放
+  bgm.loop = true // 循环播放
+  bgm.src = 'audio/bgm.mp3'
+}
+```
 
 - js 随机数
 

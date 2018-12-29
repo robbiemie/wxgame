@@ -44,12 +44,20 @@ export default class Main {
   removeEvenListener () {
   }
 
+  createBgm () {
+    const bgm = wx.createInnerAudioContext()
+    bgm.autoplay = true // 自动播放
+    bgm.loop = true // 循环播放
+    bgm.src = 'audio/bgm.mp3'
+  }
+
   init () {
     // 游戏结束，立即的销毁资源
     const bg = new Background()
     const land = new Land()
     const birds = new Birds()
     const score = new Score()
+    this.createBgm()
     // 注册资源
     this.dataStore
       .put('background', bg)

@@ -74,6 +74,7 @@ export default class Director {
       console.log('游戏结束')
       cancelAnimationFrame(this.dataStore.get('timer'))
       this.dataStore.destory()
+      wx.triggerGC()
       return
     }
     const bg = this.dataStore.get('background')
