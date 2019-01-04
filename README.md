@@ -243,6 +243,34 @@ wx.onSocketOpen(_ => {
 })
 ```
 
+- 在webSocket中发送消息
+
+```javascript
+  // 碰撞检测
+  checkCollision (point, range, image) {
+    const offset = {
+      top: -1,
+      bottom: -1,
+      left: -1,
+      right: -1
+    }
+    if (point.y < range.top + image.height / 2) {
+      // 超出上边界
+      offset.top = parseFloat((range.top + image.height / 2 - point.y) / image.height)
+    } else if (point.y > range.bottom - image.height / 2) {
+      // 超出下边界
+      offset.bottom = parseFloat((point.y - (range.bottom - image.height / 2)) / image.height)
+    }
+    if (point.x < range.left + image.width / 2) {
+      // 超出左边界
+      offset.left = parseFloat((range.left + image.width / 2 - point.x) / image.width)
+    } else if (point.x > range.right - image.width / 2) {
+      // 超出右边界
+      offset.right = parseFloat((point.x - (range.right - image.width / 2)) / image.width)
+    }
+    return offset
+  }
+```
 
 - js 随机数
 
