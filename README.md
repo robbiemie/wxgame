@@ -243,7 +243,7 @@ wx.onSocketOpen(_ => {
 })
 ```
 
-- 在webSocket中发送消息
+- 简易碰撞检测
 
 ```javascript
   // 碰撞检测
@@ -269,6 +269,41 @@ wx.onSocketOpen(_ => {
       offset.right = parseFloat((point.x - (range.right - image.width / 2)) / image.width)
     }
     return offset
+  }
+```
+
+
+
+- 简易边界检测
+
+```javascript
+  checkRange (point) {
+    let infos = {
+      valid: false,
+      pos: -1, // 点击区域无效
+      point
+    }
+    const unitImage = this.dataStore.get('wrong')
+    if (point.y >= this.topRange.top &&
+        point.y <= this.topRange.bottom &&
+        point.x >= this.topRange.left &&
+        point.x <= this.topRange.right
+    ) {
+      console.log('点击了上边界')
+      infos.pos = 0
+      infos.valid = true
+      infos.offset = this.checkCollision(point, this.topRange, unitImage)
+    } else if (point.y >= this.bottomRange.top &&
+      point.y <= this.bottomRange.bottom &&
+      point.x >= this.bottomRange.left &&
+      point.x <= this.bottomRange.right
+    ) {
+      console.log('点击了下边界')
+      infos.pos = 1
+      infos.valid = true
+      infos.offset = this.checkCollision(point, this.bottomRange, unitImage)
+    }
+    return infos
   }
 ```
 
