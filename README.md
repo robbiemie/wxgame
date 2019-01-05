@@ -273,7 +273,6 @@ wx.onSocketOpen(_ => {
 ```
 
 
-
 - 简易边界检测
 
 ```javascript
@@ -305,6 +304,18 @@ wx.onSocketOpen(_ => {
     }
     return infos
   }
+```
+
+- canvas 文字居中
+
+```javascript
+// canvas 文字居中（动态计算文字长度）
+const len = (this.score.toString().length - 1)
+this.dataStore.ctx.font = `bold ${px(48)}px Arial`
+this.dataStore.ctx.fillStyle = '#833823'
+this.dataStore.ctx.fillText(
+  this.score,
+  px(pos.x - 10 * len), px(pos.y), 1000)
 ```
 
 - js 随机数
