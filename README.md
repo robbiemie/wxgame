@@ -350,6 +350,16 @@ this.dataStore.ctx.fillText(
   })
 ```
 
+- 绘制矩形
+
+```javascript
+// 绘制矩形
+ctx.fillStyle = 'rgba(255,255,255,0.9)'
+const width = px(300)
+const height = px(200)
+ctx.fillRect(this.screenWidth / 2 - width / 2, this.screenHeight / 2 - height / 2, width, height)
+ctx.fill()
+```
 
 - js 随机数
 
