@@ -318,6 +318,39 @@ this.dataStore.ctx.fillText(
   px(pos.x - 10 * len), px(pos.y), 1000)
 ```
 
+- Promise.all 应用
+
+```javascript
+  // 资源加载
+  this.image = wx.createImage()
+  this.progressbg = wx.createImage()
+  this.progressbar = wx.createImage()
+  this.image.src = 'resources/images/common/bg.png'
+  this.progressbg.src = 'resources/images/common/progress-bar.png'
+  this.progressbar.src = 'resources/images/common/progress.png'
+  this.loaded = false
+  const p1 = new Promise(resolve => {
+    this.image.onload = _ => {
+      resolve()
+    }
+  })
+  const p2 = new Promise(resolve => {
+    this.progressbg.onload = _ => {
+      resolve()
+    }
+  })
+  const p3 = new Promise(resolve => {
+    this.progressbar.onload = _ => {
+      resolve()
+    }
+  })
+  Promise.all([p1, p2, p3]).then(_ => {
+    console.log('loading页加载完成')
+    this.loaded = true
+  })
+```
+
+
 - js 随机数
 
 ```javascript
