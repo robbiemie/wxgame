@@ -367,6 +367,37 @@ ctx.fillRect(this.screenWidth / 2 - width / 2, this.screenHeight / 2 - height / 
 ctx.fill()
 ```
 
+- canvas 文字溢出
+
+```
+  spliteWord (content) {
+    let templateWord = ''
+    /* 自定义文字内容长度 */
+    const len = 10
+    if (content.length * 2 <= len) {
+      return content
+    }
+    /* 用于记录文字内容的总长度 */
+    let strLength = 0
+    for (let i = 0; i < content.length; i++) {
+      templateWord += content.charAt(i)
+      /* charCodeAt()返回指定位置的字符的Unicode编码，值为128以下时一个字符占一位，当值在128以上是一个字符占两位 */
+      if (content.charCodeAt(i) > 128) {
+        strLength = strLength + 2
+        if (strLength >= len) {
+          return templateWord.substring(0, templateWord.length - 1) + '...'
+        }
+      } else {
+        strLength = strLength + 1
+        if (strLength >= len) {
+          return templateWord.substring(0, templateWord.length - 2) + '...'
+        }
+      }
+    }
+    return templateWord
+  }
+```
+
 - js 随机数
 
 ```javascript
