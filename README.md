@@ -25,6 +25,10 @@
 
 - 微信小游戏只允许在调试模式下使用`window`全局变量，在真机模式下使用`window`会导致报错。
 
+- 微信小游戏用户授权信息（从基础库2.0.1）仅支持通过授权按钮进行唤起调用。
+
+[createUserInfoButton 示例文档](https://developers.weixin.qq.com/minigame/dev/api/wx.createUserInfoButton.html)
+
 - 如何在canvas绘制图片
 
 ```javascript
