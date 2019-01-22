@@ -398,6 +398,12 @@ ctx.fill()
   }
 ```
 
+- 小游戏登录授权流程图
+
+![](https://makefriends.bs2dl.yy.com/bm1548142443125.jpg)
+
+
+
 - js 随机数
 
 ```javascript
